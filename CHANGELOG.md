@@ -2,6 +2,10 @@
 
 ## Bàn phím Hán Nôm cho Android
 
+### 1.4 — 09/11/2026
+- Nhắm Android 16 (API 36) theo yêu cầu của Google Play; hiển thị tràn viền đúng trên Android 15–16.
+- Có thêm bản AAB để phát hành trên Google Play, ký cùng khoá với bản APK, nên hai bản cập nhật qua lại được.
+
 ### 1.3 — 09/11/2026
 - Thêm mục **Giới thiệu** trong Cài đặt: thông tin mã nguồn mở (GPL-3.0), nút **Nguồn dữ liệu và giấy phép** hiển thị đầy đủ ghi công các nguồn, nút mở mã nguồn trên GitHub.
 

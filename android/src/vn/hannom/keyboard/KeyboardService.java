@@ -314,7 +314,7 @@ public class KeyboardService extends InputMethodService
     }
 
     private boolean learningAllowed() {
-        return learnEnabled && !noPersonalLearning && HanNomData.history() != null && HanNomData.dict() != null;
+        return learnEnabled && !noPersonalLearning && textField && HanNomData.history() != null && HanNomData.dict() != null;
     }
 
     private void breakChain() {

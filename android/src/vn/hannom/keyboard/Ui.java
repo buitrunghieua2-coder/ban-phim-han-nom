@@ -44,6 +44,29 @@ final class Ui {
 
     void styleWindow() {
         Window w = a.getWindow();
+        w.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(bg));
+        if (Build.VERSION.SDK_INT >= 35) {
+            // Android 15+ draws apps edge-to-edge: keep content clear of the status bar, navigation bar,
+            // display cutout and the on-screen keyboard (the "Gõ thử" box must stay visible while typing).
+            View content = w.getDecorView().findViewById(android.R.id.content);
+            content.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+                @Override public android.view.WindowInsets onApplyWindowInsets(View v, android.view.WindowInsets in) {
+                    int types = android.view.WindowInsets.Type.systemBars() | android.view.WindowInsets.Type.displayCutout()
+                            | android.view.WindowInsets.Type.ime();
+                    android.graphics.Insets s = in.getInsets(types);
+                    v.setPadding(s.left, s.top, s.right, s.bottom);
+                    return android.view.WindowInsets.CONSUMED;
+                }
+            });
+            content.requestApplyInsets();
+            android.view.WindowInsetsController c = w.getInsetsController();
+            if (c != null) {
+                int light = android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                        | android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+                c.setSystemBarsAppearance(dark ? 0 : light, light);
+            }
+            return;
+        }
         w.setStatusBarColor(bg);
         w.setNavigationBarColor(bg);
         if (Build.VERSION.SDK_INT >= 23) {

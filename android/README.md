@@ -1,6 +1,11 @@
-# Bàn Phím Hán Nôm cho Android — mã nguồn bản 1.3
+# Bàn Phím Hán Nôm cho Android — mã nguồn bản 1.4
 
 Bàn phím Android gõ chữ Hán và chữ Nôm bằng âm Quốc ngữ kiểu Telex. Chạy hoàn toàn trên máy, không xin quyền mạng.
+
+## Có gì mới ở bản 1.4
+
+- Nhắm Android 16 (API 36), theo yêu cầu của Google Play. Màn hình Cài đặt và Hướng dẫn hiển thị tràn viền đúng cách trên Android 15–16: nội dung không bị thanh trạng thái, thanh điều hướng hay bàn phím che.
+- Đóng gói thêm định dạng AAB để đưa lên Google Play.
 
 ## Có gì mới ở bản 1.3
 
@@ -59,12 +64,15 @@ Bàn phím Android gõ chữ Hán và chữ Nôm bằng âm Quốc ngữ kiểu 
 
 ## Build
 
-Cần JDK 17 trở lên và Android SDK gồm platform 34 và build-tools 35. Không dùng Gradle.
+Cần JDK 17 trở lên và Android SDK gồm platform 36 và build-tools 36. Không dùng Gradle.
 
 ```bash
 export ANDROID_HOME=/đường/dẫn/sdk
 export KEYSTORE=/đường/dẫn/khoá.jks         # khoá ký của bạn — KHÔNG đưa lên git
-KS_PASS='mật-khẩu-khoá' ./build.sh           # ra build/BanPhimHanNom-1.3.apk
+KS_PASS='mật-khẩu-khoá' ./build.sh           # ra build/BanPhimHanNom-1.4.apk
+
+# thêm bản AAB cho Google Play (cần bundletool 1.18+):
+BUNDLETOOL=/đường/dẫn/bundletool KS_PASS='…' ./build.sh   # ra thêm build/BanPhimHanNom-1.4.aab
 ```
 
 `build.sh` tự chép `../data/dict.txt`, `../data/nghia.txt` và phông `../data/fonts/NomNaTong-Regular.ttf` vào `assets/` trước khi đóng gói.
