@@ -1,0 +1,55 @@
+BÀN PHÍM HÁN NÔM
+Copyright © 2026 Bùi Trung Hiếu và Dự án Bàn phím Hán Nôm
+
+Phần mềm tự do, miễn phí. Mã nguồn công khai tại:
+https://github.com/buitrunghieua2-coder/ban-phim-han-nom
+
+Chương trình này là phần mềm tự do: bạn được phân phối lại và/hoặc sửa đổi theo các điều khoản của Giấy phép Công cộng GNU (GNU General Public License) phiên bản 3, do Free Software Foundation công bố. Chương trình được phân phối với hy vọng sẽ hữu ích nhưng KHÔNG CÓ BẤT KỲ BẢO ĐẢM NÀO. Toàn văn giấy phép: https://www.gnu.org/licenses/gpl-3.0.html
+
+Dự án được thực hiện với sự hỗ trợ của trợ lý trí tuệ nhân tạo Claude (Anthropic).
+
+
+──────── DỮ LIỆU ────────
+
+Từ điển gõ và dữ liệu giải nghĩa (dict.txt, nghia.txt) được phát hành theo giấy phép Creative Commons Ghi công – Chia sẻ tương tự 4.0 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/
+Dữ liệu được dựng từ các nguồn sau:
+
+• Hán Việt tự điển — Thiều Chửu (1902–1954). Phạm vi công cộng. Bản số hoá lấy từ bộ dữ liệu Cong123779/Han_Nom_Dataset (Hugging Face).
+
+• Wiktionary (vi.wiktionary.org, en.wiktionary.org), qua Kaikki.org và gói which-dialect-vi — nghĩa chữ Nôm và nghĩa từ, đã trích và rút gọn. Giấy phép CC BY-SA 4.0.
+
+• wordfreq © Robyn Speer — tần suất từ tiếng Việt dùng để xếp hạng gợi ý. Dữ liệu CC BY-SA 4.0: https://github.com/rspeer/wordfreq
+
+• Unicode Han Database (Unihan), trường kDefinition. Unicode License v3: https://www.unicode.org/license.txt
+
+• rime-ime-han-nom-data — dữ liệu gốc của từ điển gõ, đã chỉnh sửa và xếp hạng lại.
+
+MIT License
+
+Copyright (c) 2022 Tuong-Minh (Mike) Vo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+──────── BIỂU TƯỢNG ────────
+
+Biểu tượng bánh răng và mũi tên: Material Icons © Google, giấy phép Apache 2.0: https://www.apache.org/licenses/LICENSE-2.0
+
+
+──────── PHÔNG CHỮ ────────
+
+Nom Na Tong — Version 5.070
+
+MIT License
+
+© 2011–2020 The Vietnamese Nom Preservation Foundation • Nom Na Group. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

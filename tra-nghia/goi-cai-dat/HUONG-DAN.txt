@@ -1,0 +1,67 @@
+TRA NGHĨA HÁN NÔM 1.4.1 — từ điển rê chuột cho Windows
+====================================================
+Miễn phí, thuộc dự án Bàn phím Hán Nôm.
+
+CÔNG DỤNG
+  Rê chuột lên một chữ Hán hoặc chữ Nôm ở bất kỳ đâu trên Windows (trình duyệt,
+  Word, Notepad, PDF…) rồi dừng lại một thoáng (¼ giây): một ô nổi hiện ra cho biết
+    • âm đọc, loại chữ (Hán / Nôm), mã Unicode;
+    • nếu chữ nằm trong một từ ghép (vd. 越 trong 越南) thì hiện luôn nghĩa của từ;
+    • âm Hán Việt và nghĩa theo Hán Việt tự điển của Thiều Chửu;
+    • âm Nôm và nghĩa Nôm (theo Wiktionary);
+    • một số từ ghép có chữ đó.
+  Ô nổi hiện ĐẦY ĐỦ mọi nghĩa. Nghĩa dài thì có thanh cuộn bên phải:
+    • đưa chuột vào trong ô nổi rồi lăn con lăn chuột để cuộn, hoặc
+    • kéo thanh cuộn, hoặc nhấp vào rãnh thanh cuộn để lật từng trang.
+  Khi ô nổi đang mở, cứ lướt chuột sang chữ bên cạnh: ô đổi ngay sang chữ mới
+  (chỉ cần dừng chưa tới 0,1 giây). Dời chuột ra xa hoặc sang chỗ không có chữ
+  là ô tự đóng. Nhấp chuột phải vào ô cũng đóng.
+
+CÀI ĐẶT (Windows 10 / 11, không cần quyền quản trị)
+  1. Giải nén toàn bộ tệp zip ra một thư mục.
+  2. Nhấp đúp CAI-DAT.bat.
+     Nếu Windows hiện "Windows protected your PC" (SmartScreen): bấm "More info"
+     → "Run anyway". Chương trình chưa có chữ ký số nên Windows cảnh báo như vậy.
+  3. Biểu tượng chữ 𡨸 màu đỏ son xuất hiện ở khay hệ thống (góc phải dưới,
+     có thể nằm trong mũi tên ^). Thế là xong.
+
+CÀI ĐẶT TRONG CHƯƠNG TRÌNH (nhấp vào biểu tượng 𡨸)
+  • Bật tra nghĩa ............ bật/tắt (phím tắt Ctrl+Alt+N ở mọi nơi)
+  • Chỉ tra khi giữ phím Ctrl . nếu thấy ô nổi hiện lên phiền, bật mục này:
+                                 chỉ tra khi bạn giữ Ctrl lúc rê chuột
+  • Thời gian giữ chuột ....... 0,15 / 0,25 (mặc định) / 0,5 / 1 giây
+  • Giao diện ................. Theo hệ thống / Sáng (Giấy dó) / Tối (Sơn thếp vàng)
+  • Khởi động cùng Windows
+  • Mở nhật ký ................ dùng khi báo lỗi
+
+NẾU KHÔNG HIỆN Ô NỔI
+  • Chương trình đọc chữ qua "UI Automation" (công nghệ trợ năng của Windows).
+    Hầu hết ứng dụng đều hỗ trợ: Edge, Chrome, Firefox, Word, Notepad, WordPad,
+    Adobe Reader… Vài ứng dụng tự vẽ chữ (một số game, ảnh chụp màn hình, chữ
+    nằm trong hình ảnh) thì không đọc được.
+  • Trình duyệt: lần đầu có thể phải đợi 1–2 giây hoặc mở lại trang.
+  • Ứng dụng chạy bằng quyền Administrator: Windows không cho chương trình
+    thường đọc chữ của nó.
+  • Thử nhanh: mở tệp thu-tra-nghia.html (trình duyệt) hoặc thu-tra-nghia.txt
+    (Notepad, Word) đi kèm gói này và rê chuột lên các chữ.
+  • Muốn báo lỗi: nhấp biểu tượng 𡨸 → bật "Ghi nhật ký chi tiết" → rê lại lên
+    chữ bị lỗi (cả nửa trái và nửa phải chữ) → "Mở nhật ký" → gửi khoảng 40 dòng
+    cuối kèm tên ứng dụng. Xong thì tắt "Ghi nhật ký chi tiết".
+
+GỠ BỎ
+  Nhấp đúp GO-BO.bat.
+
+QUYỀN RIÊNG TƯ
+  Chương trình chỉ đọc đúng vài chữ quanh con trỏ chuột để tra, không gửi gì
+  lên mạng, không lưu nội dung bạn đọc (trừ khi bật nhật ký chi tiết: khi đó
+  vài chữ quanh con trỏ được ghi vào tệp nhật ký trên máy bạn).
+
+MÃ NGUỒN MỞ (GPL-3.0): https://github.com/buitrunghieua2-coder/ban-phim-han-nom
+
+NGUỒN DỮ LIỆU — xem thư mục giay-phep
+  • Hán Việt tự điển — Thiều Chửu (phạm vi công cộng)
+  • Wiktionary (CC BY-SA 4.0) — nghĩa Nôm, nghĩa từ
+  • Unicode Unihan (Unicode License v3)
+  • Thứ tự xếp hạng: tần suất từ wordfreq © Robyn Speer (CC BY-SA 4.0)
+  • Từ điển chữ Nôm của bộ gõ: dữ liệu rime-ime-han-nom-data
+  • Phông Nom Na Tong — Hội Bảo tồn Di sản chữ Nôm (giấy phép MIT)

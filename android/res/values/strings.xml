@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bàn Phím Hán Nôm</string>
+    <string name="ime_name">Hán Nôm (漢喃)</string>
+    <string name="subtype">Hán Nôm (Telex)</string>
+    <string name="settings_name">Cài đặt bàn phím Hán Nôm</string>
+</resources>

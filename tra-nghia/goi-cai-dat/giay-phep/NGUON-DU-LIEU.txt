@@ -1,0 +1,16 @@
+Tra Nghĩa Hán Nôm — nguồn dữ liệu và giấy phép
+
+1. Hán Việt tự điển — Thiều Chửu (1942). Phạm vi công cộng.
+2. Wiktionary — https://vi.wiktionary.org , https://en.wiktionary.org
+   Nội dung theo giấy phép Creative Commons Attribution-ShareAlike 4.0
+   (https://creativecommons.org/licenses/by-sa/4.0/). Các dòng "W" trong
+   data/nghia.txt được trích và rút gọn từ Wiktionary; bạn được chia sẻ lại
+   theo cùng giấy phép.
+3. Unicode Han Database (Unihan), trường kDefinition —
+   Unicode License v3, https://www.unicode.org/license.txt
+4. Từ điển chữ Nôm (data/dict.txt) dựng từ dữ liệu rime-ime-han-nom-data
+   (https://github.com/miketvo/rime-ime-han-nom-data) và bộ từ của Bàn phím
+   Hán Nôm cho Android; xếp hạng theo tần suất tiếng Việt của wordfreq
+   © Robyn Speer (dữ liệu CC BY-SA 4.0, https://github.com/rspeer/wordfreq).
+5. Phông Nom Na Tong — Vietnamese Nôm Preservation Foundation,
+   giấy phép MIT (xem LICENSE-NomNaTong.txt).

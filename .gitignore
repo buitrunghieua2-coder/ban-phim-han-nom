@@ -1,0 +1,13 @@
+# build output
+build/
+*.tmp.*
+# data copied into the Android assets by android/build.sh
+android/assets/dict.txt
+android/assets/nghia.txt
+android/assets/nom.ttf
+# NEVER commit signing keys or passwords
+*.jks
+*.keystore
+*.p12
+ks_pass*
+*.pem

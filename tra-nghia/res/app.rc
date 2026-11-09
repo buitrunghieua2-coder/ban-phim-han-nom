@@ -1,0 +1,28 @@
+#include <windows.h>
+#include "../src/resource.h"
+IDI_APP ICON "app.ico"
+IDI_OFF ICON "off.ico"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "app.manifest"
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,4,1,0
+PRODUCTVERSION 1,4,1,0
+FILEOS 0x40004
+FILETYPE 0x1
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "042a04b0"
+    BEGIN
+      VALUE "CompanyName", "Ban phim Han Nom"
+      VALUE "FileDescription", "Tra Nghia Han Nom"
+      VALUE "FileVersion", "1.4.1"
+      VALUE "ProductName", "Tra Nghia Han Nom"
+      VALUE "ProductVersion", "1.4.1"
+      VALUE "OriginalFilename", "TraNghiaHanNom.exe"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x042a, 1200
+  END
+END

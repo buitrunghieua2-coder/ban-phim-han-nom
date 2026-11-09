@@ -1,0 +1,57 @@
+# Bàn Phím Hán Nôm — giao diện Weasel (Tiểu Lang Hào)
+# encoding: utf-8
+#
+# Màu viết theo kiểu Weasel: 0xBBGGRR (xanh lam - xanh lục - đỏ, ngược với #RRGGBB).
+# Đổi bảng màu: sửa dòng style/color_scheme bên dưới, rồi "Triển khai lại" (重新部署).
+#   hannom_giay_do       Giấy dó  — nền giấy, chữ mực, chọn màu son   (mặc định, chế độ sáng)
+#   hannom_son_thep_vang Son thếp vàng — nền son đỏ, chữ vàng kem       (tự dùng khi Windows ở chế độ tối)
+patch:
+  style/color_scheme: hannom_giay_do
+  style/color_scheme_dark: hannom_son_thep_vang
+  # Segoe UI cho chữ Việt (âm đọc), chữ Hán Nôm tự chuyển sang Nôm Na Tống
+  style/font_face: "Segoe UI, Nom Na Tong"
+  style/font_point: 16
+  style/label_font_face: "Segoe UI"
+  style/label_font_point: 12
+  style/comment_font_face: "Segoe UI"
+  style/comment_font_point: 12
+  style/horizontal: false
+  style/inline_preedit: false
+  style/layout/corner_radius: 8
+  style/layout/round_corner: 6
+  style/layout/margin_x: 12
+  style/layout/margin_y: 10
+  style/layout/candidate_spacing: 6
+  style/layout/hilite_padding: 4
+
+  preset_color_schemes/hannom_giay_do:
+    name: "Giấy dó"
+    author: "Bàn Phím Hán Nôm"
+    back_color: 0xEAF6FB            # #FBF6EA
+    border_color: 0xACCAD9          # #D9CAAC
+    text_color: 0x22262B            # #2B2622
+    hilited_text_color: 0x22262B
+    hilited_back_color: 0xD5E4EE    # #EEE4D5
+    candidate_text_color: 0x22262B
+    comment_text_color: 0x606E7A    # #7A6E60
+    label_color: 0x606E7A
+    hilited_candidate_back_color: 0x2B2A9E   # #9E2A2B son
+    hilited_candidate_text_color: 0xFFFFFF
+    hilited_comment_text_color: 0xD8EAF3     # #F3EAD8
+    hilited_label_color: 0xD8EAF3
+
+  preset_color_schemes/hannom_son_thep_vang:
+    name: "Son thếp vàng"
+    author: "Bàn Phím Hán Nôm"
+    back_color: 0x0E0E2A            # #2A0E0E
+    border_color: 0x1F1F5A          # #5A1F1F
+    text_color: 0xD5EFFB            # #FBEFD5
+    hilited_text_color: 0xD5EFFB
+    hilited_back_color: 0x14143A    # #3A1414
+    candidate_text_color: 0xD5EFFB
+    comment_text_color: 0x8AA8C9    # #C9A88A
+    label_color: 0x8AA8C9
+    hilited_candidate_back_color: 0x17A0D4   # #D4A017 vàng
+    hilited_candidate_text_color: 0x0E0E2A
+    hilited_comment_text_color: 0x14143A
+    hilited_label_color: 0x14143A

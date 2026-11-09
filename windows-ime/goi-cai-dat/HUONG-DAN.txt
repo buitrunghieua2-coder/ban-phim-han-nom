@@ -1,0 +1,108 @@
+BÀN PHÍM HÁN NÔM 漢喃 — BẢN CHO WINDOWS
+=======================================
+
+Gõ chữ Hán và chữ Nôm bằng kiểu gõ Telex, ở mọi ứng dụng trên Windows
+(Word, trình duyệt, Zalo, Messenger…). Miễn phí, không quảng cáo, chạy
+hoàn toàn trên máy, không cần mạng.
+
+Bản Windows chạy trên nền Weasel (Tiểu Lang Hào 小狼毫), là bộ gõ mã nguồn
+mở, miễn phí. Từ điển và cách xếp hạng chữ giống bản Android 1.1. (Bản Windows 1.2)
+
+
+CẦN CÓ
+------
+• Windows 8.1, 10 hoặc 11
+• Weasel bản 0.15 trở lên (khuyên dùng 0.17.4)
+
+
+CÀI ĐẶT (khoảng 5 phút)
+-----------------------
+1. Tải Weasel tại https://rime.im hoặc https://github.com/rime/weasel/releases
+   (tệp có tên dạng weasel-0.17.4.0-installer.exe), rồi cài như bình thường.
+   • Ở hộp thoại "安裝選項" (Tuỳ chọn cài đặt), cứ để mặc định rồi bấm
+     "安裝" (Cài đặt).
+   • Weasel được đăng ký dưới mục ngôn ngữ Tiếng Trung, nên trong Windows sẽ
+     xuất hiện thêm "Tiếng Trung (Giản thể)". Đây là điều bình thường; bạn
+     không cần dùng tiếng Trung.
+
+2. Giải nén tệp này ra một thư mục (KHÔNG chạy thẳng trong tệp .zip).
+
+3. Bấm đúp vào CAI-DAT.bat. Nếu Windows hiện cảnh báo xanh "Windows đã bảo
+   vệ PC của bạn", bấm "Thông tin bổ sung" → "Vẫn chạy". Tệp này chỉ chép
+   cấu hình vào thư mục của Weasel và cài phông chữ cho tài khoản của bạn,
+   không cần quyền quản trị.
+
+4. Bấm Windows + Space để chuyển sang bộ gõ Weasel (biểu tượng 中).
+   Nếu chưa thấy dòng "Hán Nôm 漢喃", bấm F4 (hoặc Ctrl + `) để chọn.
+
+
+CÁCH GÕ
+-------
+• Gõ âm Quốc ngữ kiểu Telex:
+    aa→â  aw→ă  ee→ê  oo→ô  ow→ơ  uw→ư  dd→đ
+    s sắc · f huyền · r hỏi · x ngã · j nặng
+  Ví dụ:  nguowif → 𠊛   vieetj → 越   ddi → 𠫾   cuar → 𧵑
+• Chế độ "Gõ đủ dấu" (mặc định từ bản 1.2): chữ có âm đúng y như bạn gõ
+  luôn đứng đầu. Gõ "to" → 𡚢 (to) trước tô, tơ, tổ, tớ; muốn "tô" thì gõ
+  "too", "tớ" thì gõ "tows". Gõ thiếu dấu mà không có chữ khớp đúng
+  (vd. "nguoi") thì vẫn hiện 𠊛 người như thường.
+• Chế độ "Gõ không dấu": xếp theo độ phổ biến, "toi" ra 碎 (tôi), "co" ra
+  𣎏 (có). Đổi chế độ: bấm F4 (hoặc Ctrl + `) → chọn "Gõ đủ dấu ⇄ Gõ không dấu".
+• Gõ liền nhiều âm để ra từ ghép:  vieejtnam → 越南,  vawnhoas → 文化
+  Dùng dấu ' để tách âm khi cần.
+• Phím cách: chọn chữ đầu tiên.  Phím số 1–9: chọn chữ tương ứng.
+• Phím - và = (hoặc PgUp / PgDn): lật trang danh sách chữ.
+• Enter: giữ nguyên chữ Quốc ngữ đang gõ (gõ "vieejtnam" rồi Enter → việt nam).
+• Shift: bật/tắt chế độ gõ chữ Latinh (ABC) tạm thời.
+• Bộ gõ HỌC THÓI QUEN: chữ bạn hay chọn sẽ được đưa lên đầu, và các chữ hay
+  gõ liền nhau sẽ được ghép thành từ. Dữ liệu chỉ lưu trên máy bạn.
+
+
+ĐỔI GIAO DIỆN
+-------------
+Có 2 bảng màu:
+  • Giấy dó (sáng): mặc định
+  • Son thếp vàng (tối): tự dùng khi Windows ở chế độ tối
+Muốn dùng Son thếp vàng cả khi Windows ở chế độ sáng:
+  Bấm chuột phải vào biểu tượng 中 → "用戶文件夾" (Thư mục người dùng)
+  → mở weasel.custom.yaml bằng Notepad → đổi dòng
+      style/color_scheme: hannom_giay_do
+  thành
+      style/color_scheme: hannom_son_thep_vang
+  → lưu lại → chuột phải biểu tượng 中 → "重新部署" (Triển khai lại).
+
+
+GỠ BỎ
+-----
+Bấm đúp GO-BO.bat. Kiểu gõ Hán Nôm bị gỡ khỏi Weasel, cấu hình cũ (nếu có)
+được khôi phục. Muốn gỡ hẳn Weasel thì vào Cài đặt → Ứng dụng.
+
+
+LƯU Ý VỀ PHÔNG CHỮ
+------------------
+Bộ cài đã cài sẵn phông Nôm Na Tống để danh sách chữ hiện đủ chữ Nôm.
+Nhưng chữ sau khi gõ sẽ hiện bằng phông của ứng dụng bạn đang dùng:
+• Trong Word / Google Docs: chọn phông "Nom Na Tong" cho đoạn chữ Nôm.
+• Một số chữ Nôm hiếm có thể hiện thành ô vuông trong ứng dụng không hỗ trợ.
+  Văn bản vẫn đúng mã Unicode; mở trên máy có phông Nôm sẽ hiện bình thường.
+• Một số ứng dụng cần đóng và mở lại sau khi cài thì mới thấy phông mới.
+
+
+GẶP LỖI?
+--------
+• Không thấy "Hán Nôm 漢喃" sau khi cài: chuột phải biểu tượng 中 →
+  "重新部署" (Triển khai lại), đợi vài giây rồi bấm F4.
+• Danh sách chữ hiện ô vuông: kiểm tra đã cài phông (chạy lại CAI-DAT.bat),
+  rồi đăng xuất / đăng nhập lại Windows.
+
+
+NGUỒN DỮ LIỆU & GIẤY PHÉP
+-------------------------
+• Từ điển: rime-ime-han-nom-data © 2022 Tuong-Minh (Mike) Vo, giấy phép MIT,
+  tổng hợp từ chunom.org, Wiktionary, HVDic, Uỷ ban Phục sinh Hán Nôm;
+  dựa trên Weasel Hannom của Keepout2010.
+• Thứ tự gợi ý: Bàn Phím Hán Nôm 1.1, dùng tần suất từ wordfreq
+  © Robyn Speer (dữ liệu CC BY-SA 4.0).
+• Phông Nom Na Tong © Quỹ Bảo tồn Di sản Chữ Nôm (Nom Foundation), giấy phép
+  MIT (xem phong-chu/LICENSE-NomNaTong.txt).
+• Weasel / Rime: mã nguồn mở, GPLv3 / BSD — https://rime.im

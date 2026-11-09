@@ -1,0 +1,7 @@
+# Bàn Phím Hán Nôm — cấu hình chung của Rime (Weasel)
+# encoding: utf-8
+patch:
+  schema_list:
+    - schema: hannom
+  menu/page_size: 9
+  switcher/caption: "〔Chọn kiểu gõ〕"

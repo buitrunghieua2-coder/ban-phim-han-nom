@@ -1,0 +1,152 @@
+1
+00:00:00,900 --> 00:00:03,925
+Bàn phím Hán Nôm nay đã có trên máy tính Windows,
+
+2
+00:00:03,925 --> 00:00:05,715
+cùng một người bạn đồng hành:
+
+3
+00:00:05,715 --> 00:00:07,567
+từ điển nổi Tra Nghĩa Hán Nôm.
+
+4
+00:00:07,567 --> 00:00:11,085
+Cả hai đều miễn phí, không quảng cáo, chạy ngay trên máy,
+
+5
+00:00:11,085 --> 00:00:12,011
+không cần mạng.
+
+6
+00:00:13,067 --> 00:00:14,333
+Bạn cần tải ba thứ:
+
+7
+00:00:14,333 --> 00:00:16,865
+bộ gõ Weasel, mã nguồn mở và miễn phí;
+
+8
+00:00:16,865 --> 00:00:19,065
+gói Bàn phím Hán Nôm cho Windows;
+
+9
+00:00:19,065 --> 00:00:20,731
+và gói Tra Nghĩa Hán Nôm.
+
+10
+00:00:20,731 --> 00:00:22,663
+Đường link có trong bài viết.
+
+11
+00:00:23,733 --> 00:00:26,384
+Bước một, cài Weasel như mọi phần mềm khác,
+
+12
+00:00:26,384 --> 00:00:28,295
+cứ để mặc định rồi bấm cài đặt.
+
+13
+00:00:28,295 --> 00:00:31,933
+Windows sẽ có thêm mục tiếng Trung, đó là điều bình thường.
+
+14
+00:00:32,900 --> 00:00:35,485
+Bước hai, giải nén gói Bàn phím Hán Nôm,
+
+15
+00:00:35,485 --> 00:00:37,294
+rồi bấm đúp vào tệp cài đặt.
+
+16
+00:00:37,294 --> 00:00:41,107
+Nếu Windows hiện cảnh báo màu xanh, chọn Thông tin bổ sung,
+
+17
+00:00:41,107 --> 00:00:41,947
+rồi Vẫn chạy.
+
+18
+00:00:41,947 --> 00:00:43,691
+Chờ chừng nửa phút là xong.
+
+19
+00:00:44,633 --> 00:00:48,122
+Bấm phím Windows cùng phím cách để chuyển sang Weasel.
+
+20
+00:00:48,122 --> 00:00:51,094
+Nếu chưa thấy kiểu gõ Hán Nôm, bấm F4 để chọn.
+
+21
+00:00:52,133 --> 00:00:53,755
+Cứ gõ Telex như thường ngày:
+
+22
+00:00:53,755 --> 00:00:56,767
+chữ, nôm, người, mỗi âm hiện ngay chữ Nôm tương ứng.
+
+23
+00:00:56,767 --> 00:00:59,142
+Gõ liền việt nam, bộ gõ tự ghép thành từ.
+
+24
+00:00:59,492 --> 00:01:02,268
+Gõ đủ dấu thì chữ đúng âm luôn đứng đầu:
+
+25
+00:01:02,268 --> 00:01:05,253
+gõ to, ra ngay chữ to, trước tô, tơ hay tổ.
+
+26
+00:01:06,200 --> 00:01:10,172
+Bước ba, giải nén gói Tra Nghĩa, cũng bấm đúp vào tệp cài đặt.
+
+27
+00:01:10,172 --> 00:01:14,143
+Biểu tượng chữ Nôm màu đỏ son sẽ hiện ở góc phải thanh tác vụ.
+
+28
+00:01:15,200 --> 00:01:19,228
+Từ nay, gặp chữ Hán hay chữ Nôm ở bất kỳ đâu, trên trang web,
+
+29
+00:01:19,228 --> 00:01:20,747
+trong Word hay tệp PDF,
+
+30
+00:01:20,747 --> 00:01:23,653
+chỉ cần rê chuột lên và dừng lại một thoáng.
+
+31
+00:01:23,653 --> 00:01:26,294
+Ô nổi hiện âm đọc, nghĩa của cả từ ghép,
+
+32
+00:01:26,294 --> 00:01:29,266
+lời giảng của cụ Thiều Chửu và nghĩa chữ Nôm.
+
+33
+00:01:30,233 --> 00:01:32,860
+Lướt sang chữ bên cạnh, ô nổi đổi theo ngay.
+
+34
+00:01:32,860 --> 00:01:34,949
+Nghĩa dài thì lăn chuột để đọc hết.
+
+35
+00:01:35,900 --> 00:01:37,798
+Nhấp vào biểu tượng để bật, tắt,
+
+36
+00:01:37,798 --> 00:01:40,526
+hoặc chọn giao diện Giấy dó hay Sơn thếp vàng.
+
+37
+00:01:41,700 --> 00:01:44,200
+Tải miễn phí ở đường link trong bài viết.
+
+38
+00:01:44,200 --> 00:01:47,371
+Để chữ của cha ông còn được đọc, được viết mỗi ngày.
+
