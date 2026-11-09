@@ -20,13 +20,13 @@ Tất cả đều **miễn phí, không quảng cáo, chạy hoàn toàn trên m
 
 ## 📥 Tải về
 
-Vào mục **[Releases](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/releases/latest)** để tải bản mới nhất:
+| Sản phẩm | Tải trực tiếp |
+|---|---|
+| Bàn phím Hán Nôm cho **Android** | [BanPhimHanNom-1.3.apk](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-1.3.apk) |
+| Bàn phím Hán Nôm cho **Windows** (cần cài [Weasel](https://github.com/rime/weasel/releases) trước) | [BanPhimHanNom-Windows-1.2.zip](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-Windows-1.2.zip) |
+| Từ điển nổi **Tra Nghĩa Hán Nôm** cho Windows | [TraNghiaHanNom-1.4.1.zip](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/TraNghiaHanNom-1.4.1.zip) |
 
-- `BanPhimHanNom-1.3.apk`: bàn phím cho Android
-- `BanPhimHanNom-Windows-1.2.zip`: kiểu gõ Hán Nôm cho Windows (cần cài bộ gõ [Weasel](https://github.com/rime/weasel/releases) trước)
-- `TraNghiaHanNom-1.4.1.zip`: từ điển nổi cho Windows
-
-Hướng dẫn cài đặt chi tiết có trong tệp `HUONG-DAN.txt` của mỗi gói, và trong [video hướng dẫn](docs/video/).
+Hướng dẫn chi tiết: thư mục [`tai-ve/`](tai-ve/), tệp `HUONG-DAN.txt` trong mỗi gói, và [video hướng dẫn](docs/video/).
 
 **Lưu ý:** các bản Windows chưa có chữ ký số, nên Windows có thể hiện cảnh báo "Windows đã bảo vệ PC của bạn". Chọn **Thông tin bổ sung → Vẫn chạy**.
 
@@ -42,6 +42,7 @@ windows-ime/   Kiểu gõ Hán Nôm cho Weasel/Rime: schema, bộ lọc Lua, b�
 tra-nghia/     Từ điển nổi Tra Nghĩa (C++ / Win32, UI Automation, Direct2D/DirectWrite)
 data/          Dữ liệu dùng chung: dict.txt (từ điển gõ), nghia.txt (giải nghĩa), phông chữ, nguồn gốc, công cụ dựng
 docs/          Hình ảnh, video giới thiệu và hướng dẫn
+tai-ve/        Tệp cài đặt đã đóng gói sẵn (APK, gói Windows, Tra Nghĩa)
 ```
 
 Mỗi thư mục có `README.md` riêng hướng dẫn build.
