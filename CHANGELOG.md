@@ -2,6 +2,10 @@
 
 ## Bàn phím Hán Nôm cho Android
 
+### 1.4.1 — 12/11/2026
+- Biểu tượng ứng dụng đổi sang chữ 𡨸 (chữ), khớp với biểu tượng trên Google Play.
+- Android 15–16: bàn phím chừa chỗ cho thanh điều hướng (vạch cử chỉ hoặc ba nút), hàng phím cuối không còn bị che.
+
 ### 1.4 — 09/11/2026
 - Nhắm Android 16 (API 36) theo yêu cầu của Google Play; hiển thị tràn viền đúng trên Android 15–16.
 - Có thêm bản AAB để phát hành trên Google Play, ký cùng khoá với bản APK, nên hai bản cập nhật qua lại được.

@@ -18,6 +18,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -206,6 +207,18 @@ public class KeyboardService extends InputMethodService
         body = new FrameLayout(this);
         body.setPadding(dp(3), dp(3), dp(3), dp(6));
         root.addView(body);
+        if (Build.VERSION.SDK_INT >= 35) {
+            // Android 15+ draws the keyboard window edge-to-edge: keep the keys clear of the gesture handle /
+            // 3-button navigation bar (like Gboard), the theme background still fills the area underneath.
+            root.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+                @Override public WindowInsets onApplyWindowInsets(View v, WindowInsets in) {
+                    android.graphics.Insets nav = in.getInsets(WindowInsets.Type.navigationBars() | WindowInsets.Type.displayCutout());
+                    v.setPadding(nav.left, 0, nav.right, nav.bottom);
+                    return in;
+                }
+            });
+            root.requestApplyInsets();
+        }
         applyThemeToChrome();
         buildBody();
         renderCandidateBar();

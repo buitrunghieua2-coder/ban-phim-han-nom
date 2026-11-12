@@ -18,7 +18,7 @@ cp ../data/fonts/NomNaTong-Regular.ttf assets/nom.ttf
 "$BT/aapt2" compile --dir res -o "$OUT/res.zip"
 "$BT/aapt2" link -o "$OUT/base.apk" -I "$JAR" --manifest AndroidManifest.xml \
     -A assets --java "$OUT/gen" "$OUT/res.zip" --min-sdk-version 21 --target-sdk-version 36 \
-    --version-code 5 --version-name 1.4
+    --version-code 6 --version-name 1.4.1
 
 javac -nowarn -encoding UTF-8 --release 8 -classpath "$JAR" -d "$OUT/classes" \
     $(find src "$OUT/gen" -name '*.java') 2>&1 | grep -v -E "^Picked up|warning: \[options\]|^[0-9]+ warning" || true
@@ -30,24 +30,24 @@ cp "$OUT/base.apk" "$OUT/unsigned.apk"
 (cd "$OUT/dex" && zip -q -j ../unsigned.apk classes.dex)
 "$BT/zipalign" -f -p 4 "$OUT/unsigned.apk" "$OUT/aligned.apk"
 "$BT/apksigner" sign --ks "$KS" --ks-pass "pass:$KS_PASS" --ks-key-alias hannom \
-    --out "$OUT/BanPhimHanNom-1.4.apk" "$OUT/aligned.apk"
-"$BT/apksigner" verify --print-certs "$OUT/BanPhimHanNom-1.4.apk" | head -3
-ls -la "$OUT/BanPhimHanNom-1.4.apk"
+    --out "$OUT/BanPhimHanNom-1.4.1.apk" "$OUT/aligned.apk"
+"$BT/apksigner" verify --print-certs "$OUT/BanPhimHanNom-1.4.1.apk" | head -3
+ls -la "$OUT/BanPhimHanNom-1.4.1.apk"
 
 # ---- Android App Bundle for Google Play (needs bundletool; set BUNDLETOOL="java -jar bundletool.jar" or a -cp command)
 if [ -n "${BUNDLETOOL:-}" ]; then
     "$BT/aapt2" link --proto-format -o "$OUT/proto.apk" -I "$JAR" --manifest AndroidManifest.xml \
         -A assets "$OUT/res.zip" --min-sdk-version 21 --target-sdk-version 36 \
-        --version-code 5 --version-name 1.4
+        --version-code 6 --version-name 1.4.1
     M="$OUT/module" && rm -rf "$M" && mkdir -p "$M/manifest" "$M/dex"
     (cd "$M" && unzip -q ../proto.apk)
     mv "$M/AndroidManifest.xml" "$M/manifest/AndroidManifest.xml"
     cp "$OUT/dex/classes.dex" "$M/dex/"
     (cd "$M" && zip -q -r ../base.zip manifest dex res assets resources.pb)
-    rm -f "$OUT/BanPhimHanNom-1.4.aab"
-    $BUNDLETOOL build-bundle --modules="$OUT/base.zip" --output="$OUT/BanPhimHanNom-1.4.aab"
+    rm -f "$OUT/BanPhimHanNom-1.4.1.aab"
+    $BUNDLETOOL build-bundle --modules="$OUT/base.zip" --output="$OUT/BanPhimHanNom-1.4.1.aab"
     jarsigner -keystore "$KS" -storepass "$KS_PASS" -keypass "$KS_PASS" \
-        -sigalg SHA256withRSA -digestalg SHA-256 "$OUT/BanPhimHanNom-1.4.aab" hannom >/dev/null
-    jarsigner -verify "$OUT/BanPhimHanNom-1.4.aab" | tail -1
-    ls -la "$OUT/BanPhimHanNom-1.4.aab"
+        -sigalg SHA256withRSA -digestalg SHA-256 "$OUT/BanPhimHanNom-1.4.1.aab" hannom >/dev/null
+    jarsigner -verify "$OUT/BanPhimHanNom-1.4.1.aab" | tail -1
+    ls -la "$OUT/BanPhimHanNom-1.4.1.aab"
 fi
