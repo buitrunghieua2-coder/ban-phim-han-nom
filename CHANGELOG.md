@@ -38,6 +38,10 @@
 
 ## Tra Nghĩa Hán Nôm (Windows)
 
+### 1.4.4 — 12/11/2026
+- Zalo: tra được từng chữ trong tin nhắn dài (trước đây chỉ tra được tin nhắn 1–4 chữ). Zalo không cho biết vị trí từng chữ, nên Tra Nghĩa ước lượng vị trí theo khung tin nhắn và độ rộng chữ.
+- Các ứng dụng Electron khác: thử đọc chữ theo đúng ô văn bản dưới con trỏ khi cách tra thông thường thất bại.
+
 ### 1.4.1 — 09/11/2026
 - Sửa ghi công: phông Nom Na Tong theo giấy phép MIT; bổ sung nguồn wordfreq; thêm thông tin mã nguồn mở.
 

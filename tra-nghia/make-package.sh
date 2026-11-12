@@ -2,7 +2,7 @@
 # Biên dịch (mingw-w64) và đóng gói Tra Nghĩa Hán Nôm: ra build/TraNghiaHanNom-<ver>.zip
 set -euo pipefail
 cd "$(dirname "$0")"
-VER=${1:-1.4.1}
+VER=${1:-1.4.4}
 ./build.sh
 P=build/pkg/TraNghiaHanNom
 rm -rf build/pkg && mkdir -p "$P/data"

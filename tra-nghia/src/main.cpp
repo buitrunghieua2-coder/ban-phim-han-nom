@@ -347,6 +347,152 @@ static bool fromName(IUIAutomationElement *el, POINT pt, Hit &out) {
     return true;
 }
 
+// Chromium/Electron apps such as Zalo: RangeFromPoint on the document lands on a whitespace node, but the
+// text element under the cursor is right (its Name is the whole message). Walk that element's own range one
+// character at a time and take the character whose box holds the cursor. Messages are short; capped anyway.
+static bool fromChild(IUIAutomationTextPattern *tp, IUIAutomationElement *el, POINT pt, Hit &out) {
+    IUIAutomationTextRange *r = nullptr;
+    if (FAILED(tp->RangeFromChild(el, &r)) || !r) { if (gVerbose) logf("child: no range"); return false; }
+    std::wstring all = rangeText(r, 1200);
+    bool han = false;
+    for (char32_t c : U32(all)) if (hn::isHan(c)) { han = true; break; }
+    if (!han || all.size() > 1000) { r->Release(); if (gVerbose) logf("child: no Han (%u units)", (unsigned)all.size()); return false; }
+    IUIAutomationTextRange *c = nullptr;
+    if (FAILED(r->Clone(&c)) || !c) { r->Release(); return false; }
+    c->MoveEndpointByRange(TextPatternRangeEndpoint_End, r, TextPatternRangeEndpoint_Start);   // empty, at start
+    std::u32string full;              // code points of the element, in order
+    size_t hit = std::u32string::npos;
+    RECT hitRc{};
+    bool anyRect = false;
+    for (int guard = 0; guard < 1000; guard++) {
+        int m = 0, cmp = 0;
+        if (FAILED(r->CompareEndpoints(TextPatternRangeEndpoint_End, c, TextPatternRangeEndpoint_End, &cmp)) || cmp <= 0) break;
+        c->MoveEndpointByUnit(TextPatternRangeEndpoint_End, TextUnit_Character, 1, &m);
+        if (!m) break;
+        std::wstring ch = rangeText(c, 4);
+        if (ch.size() == 1 && isHi(ch[0])) { c->MoveEndpointByUnit(TextPatternRangeEndpoint_End, TextUnit_Character, 1, &m); ch = rangeText(c, 4); }
+        std::u32string cp = U32(ch);
+        if (!cp.empty()) {
+            if (hit == std::u32string::npos) {
+                SAFEARRAY *sa = nullptr;
+                RECT rc{};
+                if (SUCCEEDED(c->GetBoundingRectangles(&sa)) && sa) {
+                    LONG lo = 0, hi = -1;
+                    SafeArrayGetLBound(sa, 1, &lo);
+                    SafeArrayGetUBound(sa, 1, &hi);
+                    if (hi - lo + 1 >= 4) anyRect = true;
+                    if (rectsContain(sa, pt, rc) && hn::isHan(cp[0])) { hit = full.size(); hitRc = rc; }
+                }
+            }
+            full += cp;
+        }
+        c->MoveEndpointByRange(TextPatternRangeEndpoint_Start, c, TextPatternRangeEndpoint_End);   // next char
+    }
+    c->Release();
+    r->Release();
+    if (hit == std::u32string::npos && !anyRect) {
+        // provider gives no character geometry: estimate on a single line of equal-width Han characters
+        RECT er{};
+        size_t n = full.size();
+        if (n && SUCCEEDED(el->get_CurrentBoundingRectangle(&er)) && er.right > er.left) {
+            double w = double(er.right - er.left) / n, h = er.bottom - er.top;
+            if (h < 2.0 * w && pt.x >= er.left && pt.x < er.right) {
+                size_t k = size_t((pt.x - er.left) / w);
+                if (k < n && hn::isHan(full[k])) {
+                    hit = k;
+                    hitRc = {LONG(er.left + k * w), er.top, LONG(er.left + (k + 1) * w), er.bottom};
+                    if (gVerbose) logf("child: estimated position");
+                }
+            }
+        }
+    }
+    if (gVerbose) logf("child: %u chars, rects=%d, hit=%d", (unsigned)full.size(), anyRect, hit == std::u32string::npos ? -1 : (int)hit);
+    if (hit == std::u32string::npos) return false;
+    // keep a window of context around the hit, as fromTextPattern does
+    size_t a = hit > 8 ? hit - 8 : 0, b = std::min(full.size(), hit + 9);
+    out.ctx = full.substr(a, b - a);
+    out.idx = hit - a;
+    out.rc = hitRc;
+    return true;
+}
+
+// Last resort for providers that expose a message only as a Text element's Name, with no usable text
+// range at all (Zalo: RangeFromPoint gives spaces, RangeFromChild fails). Lay the Name out in the element's
+// rectangle with typical advance widths (Hán/Nôm and full-width punctuation 1 em, Latin about half) and
+// wrap it over as many lines as the rectangle's height suggests, then take the character under the cursor.
+static double emWidth(char32_t c) {
+    if (hn::isHan(c) || (c >= 0x2E80 && c <= 0x9FFF) || (c >= 0xF900 && c <= 0xFAFF) || (c >= 0xFF01 && c <= 0xFF60) ||
+        (c >= 0x3000 && c <= 0x303F) || (c >= 0xAC00 && c <= 0xD7AF))
+        return 1.0;
+    if (c == U' ') return 0.27;
+    if (c >= U'0' && c <= U'9') return 0.56;
+    if (c >= U'A' && c <= U'Z') return 0.64;
+    if (c == U'i' || c == U'l' || c == U'j' || c == U'.' || c == U',' || c == U':' || c == U';' || c == U'!' || c == U'|' || c == U'\'') return 0.26;
+    if (c == U'm' || c == U'w' || c == U'M' || c == U'W') return 0.86;
+    if (c < 0x2000) return 0.52;   // Latin incl. Vietnamese letters with diacritics, other narrow symbols
+    return 0.8;
+}
+
+static bool fromEstimate(IUIAutomationElement *el, POINT pt, Hit &out) {
+    CONTROLTYPEID ct = 0;
+    if (FAILED(el->get_CurrentControlType(&ct)) || ct != UIA_TextControlTypeId) return false;
+    BSTR b = nullptr;
+    if (FAILED(el->get_CurrentName(&b)) || !b) return false;
+    std::u32string s = U32(std::wstring(b, SysStringLen(b)));
+    SysFreeString(b);
+    if (s.empty() || s.size() > 600) return false;
+    bool han = false;
+    for (char32_t c : s) if (hn::isHan(c)) { han = true; break; }
+    if (!han) return false;
+    RECT r{};
+    if (FAILED(el->get_CurrentBoundingRectangle(&r)) || r.right <= r.left || r.bottom <= r.top) return false;
+    if (pt.x < r.left || pt.x >= r.right || pt.y < r.top || pt.y >= r.bottom) return false;
+    double W = r.right - r.left, H = r.bottom - r.top, total = 0;
+    for (char32_t c : s) total += emWidth(c);
+    // One line: the text fills the box width, so em = W / total and the box is at most ~2 em tall (Zalo's box
+    // includes generous line spacing). Learn that line height and font size from one-line messages and use them
+    // for wrapped ones: lines = H / learned line height.
+    static double gEm = 0, gLineH = 0;
+    double em1 = W / total;
+    int lines = 1;
+    double em = em1;
+    if (H <= em1 * 2.2 || (gLineH > 0 && H < gLineH * 1.5)) {
+        lines = 1;
+        if (total >= 3 && H <= em1 * 2.2) { gEm = em1; gLineH = H; }
+    } else if (gLineH > 0) {
+        lines = std::max(1, int(H / gLineH + 0.5));
+        em = gEm;
+    } else {
+        for (int L = 2; L <= 40; L++) {                  // nothing learned yet: assume ~1.5 em lines
+            double e = H / (L * 1.5);
+            if (total * e <= L * W * 1.02) { lines = L; em = e; break; }
+        }
+    }
+    if (em <= 0) return false;
+    double lineH = H / lines;
+    int row = int((pt.y - r.top) / lineH);
+    double x = r.left;
+    int curRow = 0;
+    for (size_t i = 0; i < s.size(); i++) {
+        double w = emWidth(s[i]) * em;
+        if (x + w > r.right + 0.5 && x > r.left) { curRow++; x = r.left; }   // wrap
+        if (curRow == row && pt.x >= x && pt.x < x + w) {
+            if (!hn::isHan(s[i])) { if (gVerbose) logf("estimate: lands on non-Han U+%04X", (unsigned)s[i]); return false; }
+            size_t a = i > 8 ? i - 8 : 0, e2 = std::min(s.size(), i + 9);
+            out.ctx = s.substr(a, e2 - a);
+            out.idx = i - a;
+            LONG top = LONG(r.top + row * lineH);
+            out.rc = {LONG(x), top, LONG(x + w), LONG(top + lineH)};
+            if (gVerbose) logf("estimate: %u chars, %d line(s), em=%.1f px -> #%u", (unsigned)s.size(), lines, em, (unsigned)i);
+            return true;
+        }
+        if (curRow > row) break;
+        x += w;
+    }
+    if (gVerbose) logf("estimate: %d line(s), em=%.1f px, cursor past the text", lines, em);
+    return false;
+}
+
 // Worker-thread cache: the last text container (document / edit box) and its screen rectangle. Hovering
 // inside it again skips ElementFromPoint and the walk up the tree (many cross-process calls in browsers).
 static IUIAutomationTextPattern *gCacheTp;
@@ -391,6 +537,7 @@ static bool hitTest(IUIAutomation *uia, IUIAutomationTreeWalker *walker, POINT p
             if (gVerbose) trail += "[TextPattern] ";
             got = fromTextPattern(tp, pt, out);
             if (got) out.via = "TextPattern";
+            if (!got && lvl > 0 && fromChild(tp, el, pt, out)) { got = true; out.via = "child"; }
             RECT rc{};
             if (SUCCEEDED(cur->get_CurrentBoundingRectangle(&rc)) && rc.right > rc.left) {
                 dropCache();
@@ -413,6 +560,7 @@ static bool hitTest(IUIAutomation *uia, IUIAutomationTreeWalker *walker, POINT p
         cur = parent;
     }
     if (cur) cur->Release();
+    if (!got && fromEstimate(el, pt, out)) { got = true; out.via = "estimate"; }
     if (!got && fromName(el, pt, out)) { got = true; out.via = "Name"; }
     if (!got && gVerbose) {
         BSTR nm = nullptr, cls = nullptr;
@@ -995,7 +1143,7 @@ static void onCommand(int id) {
         case ID_LOG: ShellExecuteW(nullptr, L"open", gLogPath.c_str(), nullptr, nullptr, SW_SHOWNORMAL); break;
         case ID_ABOUT:
             MessageBoxW(nullptr,
-                        L"Tra Nghĩa Hán Nôm 1.4.1 — miễn phí, mã nguồn mở (GPL-3.0), thuộc dự án Bàn phím Hán Nôm.\n\n"
+                        L"Tra Nghĩa Hán Nôm 1.4.4 — miễn phí, mã nguồn mở (GPL-3.0), thuộc dự án Bàn phím Hán Nôm.\n\n"
                         L"Rê chuột lên một chữ Hán hoặc chữ Nôm ở bất kỳ ứng dụng nào và giữ yên một thoáng (¼ giây): "
                         L"ô nổi sẽ hiện âm đọc, nghĩa và từ ghép.\n\n"
                         L"Phím tắt Ctrl+Alt+N: bật/tắt nhanh.\n\n"
@@ -1174,7 +1322,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, PWSTR, int) {
     OSVERSIONINFOW ov{sizeof ov};
     typedef LONG(WINAPI * RtlGetVersionFn)(OSVERSIONINFOW *);
     if (auto f = (RtlGetVersionFn)GetProcAddress(GetModuleHandleW(L"ntdll.dll"), "RtlGetVersion")) f(&ov);
-    logf("=== start v1.4.1, Windows %lu.%lu build %lu, exe %s", ov.dwMajorVersion, ov.dwMinorVersion, ov.dwBuildNumber, U8(path).c_str());
+    logf("=== start v1.4.4, Windows %lu.%lu build %lu, exe %s", ov.dwMajorVersion, ov.dwMinorVersion, ov.dwBuildNumber, U8(path).c_str());
 
     loadSettings();
     gVerbose = regGet(L"Verbose", 0) != 0;

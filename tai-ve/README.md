@@ -4,7 +4,7 @@
 |---|---|---|
 | `BanPhimHanNom-1.4.1.apk` | Điện thoại **Android** 5.0 trở lên | [Tải APK](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-1.4.1.apk) |
 | `BanPhimHanNom-Windows-1.2.zip` | Bàn phím Hán Nôm cho **Windows 10/11**. Cần cài bộ gõ [Weasel](https://github.com/rime/weasel/releases) trước | [Tải gói Windows](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-Windows-1.2.zip) |
-| `TraNghiaHanNom-1.4.1.zip` | Từ điển nổi **Tra Nghĩa Hán Nôm** cho Windows 10/11 | [Tải Tra Nghĩa](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/TraNghiaHanNom-1.4.1.zip) |
+| `TraNghiaHanNom-1.4.4.zip` | Từ điển nổi **Tra Nghĩa Hán Nôm** cho Windows 10/11 | [Tải Tra Nghĩa](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/TraNghiaHanNom-1.4.4.zip) |
 
 Hướng dẫn cài đặt có trong tệp `HUONG-DAN.txt` của mỗi gói.
 
@@ -16,5 +16,5 @@ Mã SHA-256 để kiểm tra tệp:
 ```
 083e62bf0bfa11cde8bd18b5aff217c71212c72b33be133e1d472740b10aa575  BanPhimHanNom-1.4.1.apk
 f0e6e5fddc6e040856888c35b5c948b6634b168e2fb777c325ce930db9ca98c3  BanPhimHanNom-Windows-1.2.zip
-491ba0afddad0b19340181c3986b1fbbc216f157889107195d51d8c2bce7fd4e  TraNghiaHanNom-1.4.1.zip
+b6dc915a71ba23e4b76837bd5a36e45cb67c79961c412f19c0662e5f26c6aed2  TraNghiaHanNom-1.4.4.zip
 ```

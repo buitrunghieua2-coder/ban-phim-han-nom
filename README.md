@@ -8,7 +8,7 @@ Dự án gồm ba sản phẩm dùng chung một kho dữ liệu:
 |---|---|---|---|
 | **Bàn phím Hán Nôm** — gõ chữ Hán, chữ Nôm bằng Telex, gợi ý thông minh, tự học thói quen, nhấn giữ để xem nghĩa | Android 5.0+ | 1.4.1 | [`android/`](android/) |
 | **Bàn phím Hán Nôm** — kiểu gõ Hán Nôm cho bộ gõ Weasel (Rime), dùng được ở mọi ứng dụng | Windows 10 / 11 | 1.2 | [`windows-ime/`](windows-ime/) |
-| **Tra Nghĩa Hán Nôm** — từ điển nổi: rê chuột lên chữ Hán/Nôm ở bất kỳ ứng dụng nào để xem âm đọc và nghĩa | Windows 10 / 11 | 1.4.1 | [`tra-nghia/`](tra-nghia/) |
+| **Tra Nghĩa Hán Nôm** — từ điển nổi: rê chuột lên chữ Hán/Nôm ở bất kỳ ứng dụng nào để xem âm đọc và nghĩa | Windows 10 / 11 | 1.4.4 | [`tra-nghia/`](tra-nghia/) |
 
 Tất cả đều **miễn phí, không quảng cáo, chạy hoàn toàn trên máy, không cần mạng, không thu thập dữ liệu.**
 
@@ -24,7 +24,7 @@ Tất cả đều **miễn phí, không quảng cáo, chạy hoàn toàn trên m
 |---|---|
 | Bàn phím Hán Nôm cho **Android** | [BanPhimHanNom-1.4.1.apk](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-1.4.1.apk) |
 | Bàn phím Hán Nôm cho **Windows** (cần cài [Weasel](https://github.com/rime/weasel/releases) trước) | [BanPhimHanNom-Windows-1.2.zip](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/BanPhimHanNom-Windows-1.2.zip) |
-| Từ điển nổi **Tra Nghĩa Hán Nôm** cho Windows | [TraNghiaHanNom-1.4.1.zip](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/TraNghiaHanNom-1.4.1.zip) |
+| Từ điển nổi **Tra Nghĩa Hán Nôm** cho Windows | [TraNghiaHanNom-1.4.4.zip](https://github.com/buitrunghieua2-coder/ban-phim-han-nom/raw/main/tai-ve/TraNghiaHanNom-1.4.4.zip) |
 
 Hướng dẫn chi tiết: thư mục [`tai-ve/`](tai-ve/), tệp `HUONG-DAN.txt` trong mỗi gói, và [video hướng dẫn](docs/video/).
 
